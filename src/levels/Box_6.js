@@ -26,15 +26,15 @@ export default function Box_6(props){
     const [obj, setObj] = useState({});
 
     useEffect(()=>{
-        console.log(nodes)
-        console.log(materials)
+      //  console.log(nodes)
+      //  console.log(materials)
 
 
 
     },[selectRestart])
 
     useEffect(()=>{
-        dispatch({type:"LEVEL",preload:props.level?props.level:1})
+     //   dispatch({type:"LEVEL",preload:props.level?props.level:1})
     },[])
 
     let speed = 0.05;

@@ -29,7 +29,7 @@ function App() {
                 <Timer/>
                 {selectLevel === 1 ? <Start/> : ""}
                 {selectExit ? <LevelTransfer/> : ""}
-                <Canvas shadows camera={{fov: 35, far: 1000}}>
+                <Canvas camera={{ position: [0, 0, 5], fov: 30 }}>
                     <ambientLight intensity={Math.PI / 2}/>
                     <spotLight intensity={0.1} angle={0.1} penumbra={1} position={[10, 15, 10]} castShadow/>
                     <Levels selectLevel={selectLevel}/>

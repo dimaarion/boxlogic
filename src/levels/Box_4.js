@@ -32,7 +32,7 @@ export default function Box_4(props){
     },[selectRestart])
 
     useEffect(()=>{
-        dispatch({type:"LEVEL",preload:props.level?props.level:1})
+      //  dispatch({type:"LEVEL",preload:props.level?props.level:1})
     },[])
 
     let speed = 0.5;
@@ -76,7 +76,7 @@ if(!selectExit){
             onPointerMissed={() => (state.current = null)}
             onClick={(e) => {
                 e.stopPropagation();
-                console.log(e.object.name)
+               // console.log(e.object.name)
                 setObj(e.object)
                 if(cube.cube1 && e.object.name === "open"){
                     dispatch({type:"EXIT",preload:true})

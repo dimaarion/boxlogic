@@ -31,7 +31,7 @@ export default function Box_1(props) {
     }, [selectExit])
 
     useEffect(() => {
-        dispatch({type: "LEVEL", preload: props.level ? props.level : 1})
+       // dispatch({type: "LEVEL", preload: props.level ? props.level : 1})
     }, [])
 
     useEffect(() => {

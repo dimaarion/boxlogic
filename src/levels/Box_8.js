@@ -8,7 +8,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {defaultAnimation} from "../action";
 
 
-
 export default function Box_8(props) {
     const dispatch = useDispatch();
     const selectExit = useSelector((state) => state.gameExitLevel);
@@ -31,7 +30,7 @@ export default function Box_8(props) {
 
 
     useEffect(() => {
-        dispatch({type: "LEVEL", preload: props.level ? props.level : 1});
+        //  dispatch({type: "LEVEL", preload: props.level ? props.level : 1});
         console.log(nodes)
         console.log(materials)
     }, [])
@@ -43,6 +42,13 @@ export default function Box_8(props) {
     useFrame((state) => {
         const t = state.clock.getElapsedTime()
         defaultAnimation(ref, t)
+
+        if(obj.name  === "paz"){
+            if (obj.position.z < 1.1) {
+                obj.position.z += 0.01
+            }
+        }
+
         if (obj.name === "key_1") {
             setCube({cube1: true, cube2: false, cube3: false, cube4: false});
             setOpen(false)
@@ -97,7 +103,6 @@ export default function Box_8(props) {
     }, [selectExit, open])
 
 
-
     return (
         <group
 
@@ -107,26 +112,66 @@ export default function Box_8(props) {
             onClick={(e) => {
                 e.stopPropagation();
                 setObj(e.object)
+
+console.log(paz)
                 if (cube.cube1 && cube.cube2 && cube.cube3 && cube.cube3 && e.object.name === "open") {
                     dispatch({type: "EXIT", preload: true})
                     setCube(initial);
                 }
             }}>
-            <Physics colliders={false}>
-                <RigidBody ref={box} scale={[1, 1, 0.13]} colliders="trimesh"  type="kinematicPosition">
-                    <mesh receiveShadow castShadow geometry={nodes.box.geometry} material={materials.box} name="box" />
-                </RigidBody>
-                <group ref={paz} scale={[1, 1, 1]}>
-                    <RigidBody colliders="cuboid" args={[0.5, 16, 16]}  position={[0, 1, -1]} >
-                        <mesh receiveShadow castShadow geometry={nodes.paz1.geometry}
-                              material={materials.paz} name="paz1"/>
-                    </RigidBody>
-                    <RigidBody colliders="cuboid" args={[0.5, 16, 16]} position={[0, 1, -1]}>
-                        <mesh receiveShadow castShadow geometry={nodes.paz4.geometry}   material={materials.paz} name="paz4"/>
-                    </RigidBody>
-                </group>
 
-            </Physics>
+            <group ref={box} scale={[1.5, 1, 0.13]} colliders="trimesh" type="kinematicPosition">
+                <mesh receiveShadow castShadow geometry={nodes.box.geometry} material={materials.box} name="box"/>
+            </group>
+            <group ref={paz} position={[-1.1, 0, 0]} scale={[1.5, 1, 1]}>
+                <mesh receiveShadow castShadow
+                      position={[0.5, 1, 1]} geometry={nodes.paz1.geometry}
+                      material={materials.paz} name="paz" />
+                <mesh receiveShadow castShadow geometry={nodes.paz2.geometry}
+                      position={[1, 1, 1]}
+                      material={materials.paz} name="paz"/>
+                <mesh receiveShadow castShadow geometry={nodes.paz3.geometry}
+                      position={[1.5, 1, 1]}
+                      material={materials.paz} name="paz"/>
+                <mesh receiveShadow castShadow
+                      position={[0, 0.5, 1]} geometry={nodes.paz4.geometry}
+                      material={materials.paz} name="paz"/>
+                <mesh receiveShadow castShadow geometry={nodes.paz5.geometry}
+                      position={[0.5, 0.5, 1]}
+                      material={materials.paz} name="paz"/>
+                <mesh receiveShadow castShadow geometry={nodes.paz6.geometry}
+                      position={[1, 0.5, 1]}
+                      material={materials.paz} name="paz"/>
+                <mesh receiveShadow castShadow
+                      position={[1.5, 0.5, 1]} geometry={nodes.paz7.geometry}
+                      material={materials.paz} name="paz"/>
+                <mesh receiveShadow castShadow geometry={nodes.paz8.geometry}
+                      position={[0, 0, 1]}
+                      material={materials.paz} name="paz8"/>
+                <mesh receiveShadow castShadow geometry={nodes.paz9.geometry}
+                      position={[0.5, 0, 1]}
+                      material={materials.paz} name="paz9"/>
+                <mesh receiveShadow castShadow
+                      position={[1, 0, 1]} geometry={nodes.paz10.geometry}
+                      material={materials.paz} name="paz10"/>
+                <mesh receiveShadow castShadow geometry={nodes.paz11.geometry}
+                      position={[1.5, 0, 1]}
+                      material={materials.paz} name="paz11"/>
+                <mesh receiveShadow castShadow geometry={nodes.paz12.geometry}
+                      position={[0, -0.5, 1]}
+                      material={materials.paz} name="paz12"/>
+                <mesh receiveShadow castShadow geometry={nodes.paz13.geometry}
+                      position={[0.5, -0.5, 1]}
+                      material={materials.paz} name="paz13"/>
+                <mesh receiveShadow castShadow geometry={nodes.paz14.geometry}
+                      position={[1, -0.5, 1]}
+                      material={materials.paz} name="paz14"/>
+                <mesh receiveShadow castShadow geometry={nodes.paz15.geometry}
+                      position={[1.5, -0.5, 1]}
+                      material={materials.paz} name="paz15"/>
+            </group>
+
+
         </group>
     )
 }
