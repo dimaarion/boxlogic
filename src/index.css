@@ -1,13 +1,262 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f0f0f0;
+  background-image: url('./asset/bg/1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.timer{
+  position: fixed;
+  margin: auto;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+}
+.item{
+  position: absolute;
+  margin: auto;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  border: solid 4px #9370DB;
+  color: #9370DB;
+  border-radius: 75px;
+}
+.box-timer{
+  display: inline-flex;
+  position: absolute;
+  margin: auto;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  text-shadow: 1px 1px 1px #4d515a;
+
+}
+.box-timer div{
+  font-size: 20pt;
+  margin: 0 2px 0 2px;
+}
+.level{
+  position: fixed;
+  font-size: 15pt;
+  margin-left: 10px;
+  color: #9370DB;
+  text-shadow: 1px 1px 1px  #4d515a;
+  z-index: 1000;
+}
+.glasses{
+  position: fixed;
+  font-size: 15pt;
+  margin-top: 30px;
+  margin-left: 10px;
+  color: #9370DB;
+  text-shadow: 1px 1px 1px  #4d515a;
+  z-index: 1000;
+}
+.pause{
+  position: fixed;
+  margin: auto;
+  right: 0;
+  left: 0;
+  width: 100px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.bi-pause{
+  position: absolute;
+  right: 0;
+  left: 0;
+  color: #9370DB;
+  text-shadow: 1px 1px 1px  #4d515a;
+}
+.bg-pause{
+  position: fixed;
+  background-color: #282c34;
+  margin: auto;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 500;
+  opacity: 0.8;
+
+}
+.soundPanel{
+  position: fixed;
+  z-index: 1500;
+  margin: auto;
+  right: 0;
+  left: 0;
+  top:0;
+  bottom: 0;
+  height: 150px;
+  width: 250px;
+  background-color: #a58cd7;
+  border-radius: 10px;
+}
+.musicRange{
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}
+
+.bi-volume-up{
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.level-transfer{
+  position: fixed;
+  z-index: 1500;
+  margin: auto;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 200px;
+  width: 500px;
+  background-color: #a58cd7;
+  border-radius: 10px;
+}
+.panel{
+  color: #4411a3;
+  box-shadow: 0 0 10px #7f52d9;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+
+}
+.panel :hover{
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 0 10px  #4411a3;
+  border-radius: 20px;
+
+}
+.loading{
+  width: 30%;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  font-size: 50pt;
+  color: #f0f0f0;
+}
+
+.rotation{
+  background-image: url("./asset/start/1.png");
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  z-index: 1000;
+}
+.level-menu{
+  position: fixed;
+  top: 10px;
+  bottom: 10px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 500px;
+  height: auto;
+  background-color: #a58cd7;
+  z-index: 5000;
+  border-radius: 20px;
+  padding: 30px;
+  display: grid;
+  overflow: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-rows: 1fr 1fr 1fr 1fr ;
+
+}
+.level-menu .level-menu-item{
+  margin: 10px;
+  font-size: 20pt;
+  border: solid 3px #4411a3;
+  height: 80px;
+  text-align: center;
+  padding-top: 5px;
+  color: #f0f0f0;
+  text-shadow: 2px 2px 2px #562cad;
+  cursor: pointer;
+}
+.level-menu > .level-menu-item:hover{
+  box-shadow: 0 0 6px #4411a3;
+}
+
+.level-menu .close{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  border: none;
+  cursor: pointer;
+}
+.rate{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-rows: 1fr 1fr 1fr ;
+  gap: 15px;
+  justify-content: center;
+}
+.rate-item{
+  margin-top: 50px;
+  text-align: center;
+
+}
+
+.rate-item img{
+  width: 30%;
+}
+.level-lock{
+  margin-top: 10px;
+}
+
+.rate-item-list{
+  margin: 1px;
+}
+
+.panel-global{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 70px;
+  height: 70px;
+  color: #9370DB;
+  z-index: 5000;
+  cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+  .level-transfer{
+    width: 95%;
+
+  }
+  .level-menu{
+    width: 95%;
+  }
 }

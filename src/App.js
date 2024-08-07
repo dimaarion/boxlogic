@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import {Canvas} from "@react-three/fiber"
+import {Environment, CameraControls, useGLTF} from "@react-three/drei"
+import Timer from "./components/Timer";
+import Level from "./components/Level";
+import Glasses from "./components/Glasses";
+import Pause from "./components/Pause";
+import LevelTransfer from "./components/LevelTransfer";
+import {useSelector} from "react-redux";
+import React, {Suspense} from "react";
+import Loader from "./components/Loader";
+import Start from "./components/Start";
+import Levels from "./components/Levels";
+import OpenLevelList from "./components/OpenLevelList";
+import BgPause from "./components/BgPause";
+import LevelMenu from "./components/LevelMenu";
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const selectExit = useSelector((state) => state.gameExitLevel);
+    const selectLevel = useSelector((state) => state.level);
+    const selectOpenLevelPanel = useSelector((state)=>state.openLevelPanel);
+    return (
+        <>
+            <Suspense fallback={<Loader/>}>
+                <Pause/>
+                <Glasses/>
+                <Level/>
+                <Timer/>
+                {selectLevel === 1 ? <Start/> : ""}
+                {selectExit ? <LevelTransfer/> : ""}
+                <Canvas shadows camera={{fov: 35, far: 1000}}>
+                    <ambientLight intensity={Math.PI / 2}/>
+                    <spotLight intensity={0.1} angle={0.1} penumbra={1} position={[10, 15, 10]} castShadow/>
+                    <Levels selectLevel={selectLevel}/>
+                    <Environment preset="city"/>
+                    <CameraControls makeDefault distance={8}/>
+                </Canvas>
+                <OpenLevelList class = "panel-global"/>
+                {selectOpenLevelPanel?<div>
+                    <BgPause/>
+                    <LevelMenu/>
+                </div>:""}
+            </Suspense>
+        </>
+    )
 }
+
+useGLTF.preload('./asset/obj/cub.glb');
+useGLTF.preload('./asset/obj/box2.glb');
+useGLTF.preload('./asset/obj/box3.glb');
+useGLTF.preload('./asset/obj/box4.glb');
+useGLTF.preload('./asset/obj/box5.glb');
+useGLTF.preload('./asset/obj/box6.glb');
 
 export default App;
