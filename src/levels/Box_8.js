@@ -100,7 +100,7 @@ export default function Box_8(props) {
 
     return (
         <group
-
+jjj
             ref={ref}
             scale={[1, 1, 1]}
             onPointerMissed={() => (state.current = null)}
