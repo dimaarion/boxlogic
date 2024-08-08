@@ -39,7 +39,7 @@ export default function Box_2(props){
     },[])
 
     let speed = 0.5;
-    let position = 3
+    let position = 10
 
     useFrame((state) => {
         const t = state.clock.getElapsedTime()
@@ -48,15 +48,15 @@ export default function Box_2(props){
         console.log(cube.cube1)
         if(obj.name === "cub1"){
             setCube({cube1:true})
-            if(obj.position.z < position){
+            if(obj.position.z < position / 3){
                 obj.position.z += speed
             }
         }
 
         if(obj.name === "open" && selectExit){
             setCube({cube1:false})
-            if(obj.position.y < position){
-                obj.position.y += speed
+            if(obj.position.x < position){
+                obj.position.x += speed
             }
         }
 
@@ -64,7 +64,7 @@ export default function Box_2(props){
 
 useEffect(()=>{
 if(!selectExit){
-    ref.current.children.filter((el)=>el.name === "open").forEach((el)=>{el.position.y = 0});
+    ref.current.children.filter((el)=>el.name === "open").forEach((el)=>{el.position.x = 0});
     ref.current.children.filter((el)=>el.name === "cub1").forEach((el)=>{el.position.z = 0});
 }
 },[selectExit])

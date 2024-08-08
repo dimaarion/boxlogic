@@ -4,7 +4,7 @@ import Rate from "./Rate";
 
 export default function LevelMenu(){
     const dispatch = useDispatch();
-    const levels = numInArr(50);
+    const levels = numInArr(10);
     const selectLevelOptions = useSelector((state)=>state.levelOptions).concat(levels);
 
 

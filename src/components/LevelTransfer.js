@@ -16,7 +16,7 @@ export default function LevelTransfer() {
     const selectLevel = useSelector((state) => state.level);
     const selectLevelOptions = useSelector((state) => state.levelOptions);
     const selectOpenLevelPanel = useSelector((state)=>state.openLevelPanel);
-    const grass = [25, 50, 100,150];
+    const grass = [25, 50, 100, 150];
     const [levelPanel, setLevelPanel] = useState(false)
 
 

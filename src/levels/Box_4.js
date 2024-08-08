@@ -8,7 +8,7 @@ import {defaultAnimation} from "../action";
 
 
 
-export default function Box_4(props){
+export default function Box_4(){
     const dispatch = useDispatch();
     const selectExit = useSelector((state)=>state.gameExitLevel);
     const selectRestart = useSelector((state)=>state.restart);
@@ -26,8 +26,8 @@ export default function Box_4(props){
     const [obj, setObj] = useState({});
 
     useEffect(()=>{
-     //   console.log(nodes)
-      //  console.log(materials)
+        console.log(nodes)
+        console.log(materials)
 
     },[selectRestart])
 
@@ -35,14 +35,14 @@ export default function Box_4(props){
       //  dispatch({type:"LEVEL",preload:props.level?props.level:1})
     },[])
 
-    let speed = 0.5;
+    let speed = 0.1;
     let position = 3
 
     useFrame((state) => {
         const t = state.clock.getElapsedTime()
         defaultAnimation(ref,t)
 
-        if(obj.name === "cub1"){
+        if(obj.name === "key"){
             setCube({cube1:true})
             if(obj.position.z > -position){
                 obj.position.z -= speed
@@ -61,13 +61,14 @@ export default function Box_4(props){
 useEffect(()=>{
 if(!selectExit){
     ref.current.children.filter((el)=>el.name === "open").forEach((el)=>{el.position.y = 0})
-    ref.current.children.filter((el)=>el.name === "cub1").forEach((el)=>{el.position.z = 0})
+    ref.current.children.filter((el)=>el.name === "key").forEach((el)=>{el.position.z = 0})
 
 }
 
 
 
 },[selectExit])
+
 
     return (
         <group
@@ -76,20 +77,15 @@ if(!selectExit){
             onPointerMissed={() => (state.current = null)}
             onClick={(e) => {
                 e.stopPropagation();
-               // console.log(e.object.name)
                 setObj(e.object)
                 if(cube.cube1 && e.object.name === "open"){
                     dispatch({type:"EXIT",preload:true})
                     setCube({cube1:false})
                 }
             }}>
-
-
-
-            <mesh receiveShadow castShadow geometry={nodes.box.geometry}  material={materials.box} name = "cub1"  />
             <mesh receiveShadow castShadow geometry={nodes.box_1.geometry}  material={materials.box} name = "box"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_2.geometry}  material={materials.box} name = "open"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_3.geometry}  material={materials.box} name = "cub1"  />
+            <mesh receiveShadow castShadow geometry={nodes.box_2.geometry} material={materials.box} name = "open"  />
+            <mesh receiveShadow castShadow geometry={nodes.box_3.geometry}  material={materials.box} name = "key"  />
         </group>
     )
 }

@@ -20,8 +20,7 @@ export default function Timer() {
                 }
             }
 
-
-        }, 1000);
+        }, 1000)
         // clearing interval
         return () => clearInterval(timer);
     });

@@ -44,9 +44,16 @@ export default function Box_8(props) {
         defaultAnimation(ref, t)
 
         if(obj.name  === "paz"){
-            if (obj.position.z < 1.1) {
-                obj.position.z += 0.01
-            }
+            paz.current.children.forEach((el)=>{
+                if(el === obj){
+                    if (el.position.z < 1.2) {
+                        el.position.z += 0.01
+                    }
+                }else{
+                    el.position.z = 1;
+                }
+            })
+
         }
 
         if (obj.name === "key_1") {
