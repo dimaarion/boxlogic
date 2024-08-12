@@ -46,6 +46,7 @@ export default function Pause(){
         window.addEventListener("blur",()=>{
             setFocus(false);
         })
+
     },[])
 
 
