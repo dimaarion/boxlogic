@@ -13,6 +13,7 @@ import Levels from "./components/Levels";
 import OpenLevelList from "./components/OpenLevelList";
 import BgPause from "./components/BgPause";
 import LevelMenu from "./components/LevelMenu";
+import Question from "./components/Question";
 
 
 
@@ -27,6 +28,7 @@ function App() {
                 <Glasses/>
                 <Level/>
                 <Timer/>
+                <Question />
                 {selectLevel === 1 ? <Start/> : ""}
                 {selectExit ? <LevelTransfer/> : ""}
                 <Canvas camera={{ position: [0, 0, 5], fov: 30 }}>
@@ -52,5 +54,8 @@ useGLTF.preload('./asset/obj/box3.glb');
 useGLTF.preload('./asset/obj/box4.glb');
 useGLTF.preload('./asset/obj/box5.glb');
 useGLTF.preload('./asset/obj/box6.glb');
+useGLTF.preload('./asset/obj/box7.glb');
+useGLTF.preload('./asset/obj/box8.glb');
+useGLTF.preload('./asset/obj/box9.glb');
 
 export default App;

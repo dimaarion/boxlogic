@@ -251,6 +251,41 @@ body {
   z-index: 5000;
   cursor: pointer;
 }
+
+.question{
+  position: fixed;
+  z-index: 5000;
+  color: #9370DB;
+  bottom: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+.question_item{
+  position: fixed;
+  z-index: 10000;
+  right: 0;
+  left: 0;
+  top: 100px;
+  width: 60%;
+  margin: auto;
+  min-height: 100px;
+  background: #e0dce8;
+  padding: 10px;
+  border-radius: 25px;
+  font-size: 18pt;
+  text-shadow: 1px 1px 2px #562cad;
+  box-shadow: 0px 0px 10px #f0f0f0;
+}
+
+
+.question_item .close{
+  position: absolute;
+  margin: auto;
+  right: 0;
+  cursor: pointer;
+  top: 0;
+}
 @media only screen and (max-width: 600px) {
   .level-transfer{
     width: 95%;

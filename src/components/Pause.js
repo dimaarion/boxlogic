@@ -12,7 +12,7 @@ export default function Pause(){
     const dispatch = useDispatch();
     const selectPause = useSelector((state)=>state.gamePause);
     const selectExit = useSelector((state)=>state.gameExitLevel);
-    const selectValueMusic = useSelector((state)=>state.valueMusic);
+
     const selectOpenLevelPanel = useSelector((state)=>state.openLevelPanel);
     const [focus, setFocus] = useState(false);
     const [play, { stop }] = useSound(

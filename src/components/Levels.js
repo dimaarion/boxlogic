@@ -9,6 +9,7 @@ import Box_7 from "../levels/Box_7";
 import {useSelector} from "react-redux";
 import Box from "../levels/Box";
 import Box_8 from "../levels/Box_8";
+import Box_9 from "../levels/Box_9";
 
 export default function Levels(props) {
     const selectExit = useSelector((state) => state.gameExitLevel);
@@ -30,6 +31,8 @@ export default function Levels(props) {
             return <Box_7 level={7}/>;
         case 8:
             return <Box_8 level={8}/>;
+        case 9:
+            return <Box_9 level={9}/>;
         default:
             return <Box_1 level={1}/>
     }
