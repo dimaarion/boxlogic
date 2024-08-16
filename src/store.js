@@ -106,6 +106,24 @@ function openLevelPanel(state = false,action){
     }
 }
 
+function questCount(state = 0,action){
+    switch (action.type) {
+        case "QUEST_COUNT":
+            return action.preload;
+        default:
+            return state
+    }
+}
+
+function questOpen(state = false,action){
+    switch (action.type) {
+        case "QUEST_OPEN":
+            return action.preload;
+        default:
+            return state
+    }
+}
+
 
 export default configureStore({
     reducer: {
@@ -118,6 +136,8 @@ export default configureStore({
         grasses:grasses,
         rate:rate,
         levelOptions:levelOptions,
-        openLevelPanel:openLevelPanel
+        openLevelPanel:openLevelPanel,
+        questCount:questCount,
+        questOpen:questOpen
     },
 })

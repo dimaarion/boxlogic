@@ -68,6 +68,7 @@ export default function Box_8(props) {
                 if (el.position.y < position) {
                     el.position.y += speed;
                 }
+                dispatch({type:"QUEST_COUNT",preload:1});
             });
 
             if (distantCollege(key_1_1, 32, 100)
@@ -84,7 +85,7 @@ export default function Box_8(props) {
                     }
 
                     setOpen_2(true)
-
+                    dispatch({type:"QUEST_COUNT",preload:2});
                 });
 
             } else {

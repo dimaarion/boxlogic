@@ -274,8 +274,7 @@ body {
   padding: 10px;
   border-radius: 25px;
   font-size: 18pt;
-  text-shadow: 1px 1px 2px #562cad;
-  box-shadow: 0px 0px 10px #f0f0f0;
+  box-shadow: 0 0 10px #f0f0f0;
 }
 
 
@@ -286,6 +285,20 @@ body {
   cursor: pointer;
   top: 0;
 }
+.question_item h2{
+  font-size: 18pt;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+  color: dimgray;
+}
+.question_item p{
+  color: #55400d;
+}
+
 @media only screen and (max-width: 600px) {
   .level-transfer{
     width: 95%;

@@ -12,6 +12,7 @@ export default function Box_7(props){
     const dispatch = useDispatch();
     const selectExit = useSelector((state)=>state.gameExitLevel);
     const selectRestart = useSelector((state)=>state.restart);
+    const selectCountQuest = useSelector((state)=>state.questCount);
 
     const state = proxy({
         current: null
@@ -22,19 +23,21 @@ export default function Box_7(props){
     const initial = {cube1:false,cube2:false,cube3:false,cube4:false};
 
 
-    const { nodes, materials } = useGLTF("./asset/obj/box7.glb")
+    const {nodes, materials } = useGLTF("./asset/obj/box7.glb")
     const [cube, setCube] = useState(initial);
     const [obj, setObj] = useState({});
     const [open, setOpen] = useState(false);
 
 
     useEffect(()=>{
-      //  dispatch({type:"LEVEL",preload:props.level?props.level:1})
-    },[])
+       dispatch({type:"QUEST_OPEN",preload:false});
+    },[selectCountQuest])
 
     let speed = 0.05;
     let position = 0.05;
-    let positionOpen = 2
+    let positionOpen = 2;
+
+
 
     useFrame((state) => {
         const t = state.clock.getElapsedTime()
@@ -43,15 +46,17 @@ export default function Box_7(props){
 
         if(obj.name === "key_1"){
             setCube({cube1:true,cube2: false,cube3: false, cube4: false});
-            setOpen(false)
+            setOpen(false);
+            dispatch({type:"QUEST_COUNT",preload:1});
             if(obj.position.y > -position){
                 obj.position.y -= speed
             }
         }
 
         if(obj.name === "key_2" && cube.cube1){
-            setOpen(false)
-            setCube({cube1:true,cube2: true,cube3: false, cube4: false})
+            setOpen(false);
+            setCube({cube1:true,cube2: true,cube3: false, cube4: false});
+            dispatch({type:"QUEST_COUNT",preload:2});
             if(obj.position.y > -position){
                 obj.position.y -= speed
             }
@@ -72,7 +77,7 @@ export default function Box_7(props){
             }
         }
 
-        if(obj.name === "open" && selectExit){
+        if(obj.name === "key_4" && selectExit){
             if(head.current.position.y < positionOpen){
                 head.current.position.y += speed
             }
@@ -107,7 +112,7 @@ if(!selectExit || open){
             onClick={(e) => {
                 e.stopPropagation();
                 setObj(e.object)
-                if(cube.cube1 && cube.cube2 && cube.cube3 && cube.cube3 && e.object.name === "open"){
+                if(cube.cube1 && cube.cube2 && cube.cube3 && e.object.name === "key_4"){
                     dispatch({type:"EXIT",preload:true})
                     setCube(initial);
                 }

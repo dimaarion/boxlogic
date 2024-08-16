@@ -148,6 +148,11 @@ export default function Box_9() {
             }
 
         }
+
+        if(distantCollege(key_open, -220, -190) || distantCollege(key_open, 145, 160)){
+            dispatch({type:"QUEST_COUNT",preload:1});
+        }
+
         if (distantCollege(key_1, -1, 1)
             && distantCollege(key_2, 3, 5)
             && distantCollege(key_3, -3, -2)
