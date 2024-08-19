@@ -30,13 +30,11 @@ export default function Box_2(props){
      //   console.log(nodes)
      //   console.log(materials)
 
-
-
     },[selectRestart])
 
     useEffect(()=>{
-     //   dispatch({type:"LEVEL",preload:props.level?props.level:1})
-    },[])
+        dispatch({type:"QUEST_OPEN",preload:false})
+    },[cube.cube1])
 
     let speed = 0.5;
     let position = 10
@@ -45,9 +43,10 @@ export default function Box_2(props){
         const t = state.clock.getElapsedTime()
         defaultAnimation(ref,t)
 
-        console.log(cube.cube1)
+
         if(obj.name === "cub1"){
             setCube({cube1:true})
+            dispatch({type:"QUEST_COUNT",preload:1});
             if(obj.position.z < position / 3){
                 obj.position.z += speed
             }
@@ -66,6 +65,7 @@ useEffect(()=>{
 if(!selectExit){
     ref.current.children.filter((el)=>el.name === "open").forEach((el)=>{el.position.x = 0});
     ref.current.children.filter((el)=>el.name === "cub1").forEach((el)=>{el.position.z = 0});
+    dispatch({type:"QUEST_COUNT",preload:0});
 }
 },[selectExit])
 

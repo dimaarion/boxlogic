@@ -53,6 +53,7 @@ export default function Box_8(props) {
     const [open_2, setOpen_2] = useState(false);
 
 
+
     let speed = 0.05;
     let position = 1;
     let speedOpen = 2;
@@ -68,6 +69,7 @@ export default function Box_8(props) {
                 if (el.position.y < position) {
                     el.position.y += speed;
                 }
+                dispatch({type:"QUEST_COUNT",preload:1});
             });
 
             if (distantCollege(key_1_1, 32, 100)
@@ -84,7 +86,7 @@ export default function Box_8(props) {
                     }
 
                     setOpen_2(true)
-
+                    dispatch({type:"QUEST_COUNT",preload:2});
                 });
 
             } else {
@@ -156,6 +158,10 @@ export default function Box_8(props) {
 
         } else {
 
+            ref.current.children.filter((el) => el.name === "open_1").forEach((el) => {
+                el.position.y = 0;
+            });
+
             if (keyRotate) {
                 ref.current.children.filter((el) => el.name === "key_2_1").forEach((el) => {
                     el.rotation.x = velocityInvert(t);
@@ -209,7 +215,7 @@ export default function Box_8(props) {
 
         }
 
-        if (open_2) {
+        if (open_2 && key_1 === 90 && key_2 === 90 && key_3 === 90) {
             if (keyRotateAlf) {
                 setKey_alf(key_alf - speedOpen)
                 if (key_alf < -360) {
@@ -345,25 +351,23 @@ export default function Box_8(props) {
             onClick={(e) => {
                 e.stopPropagation();
                 //  setObj(e.object);
+
                 if (e.object.name === "key_1_1") {
-                    if (key_1 === 360) {
-                        setKey_1(90)
-                    } else {
-                        setKey_1(key_1 + 90)
+                    setKey_1(key_1 + 90)
+                    if (key_1 > 0 ) {
+                        setKey_1(0)
                     }
                 }
                 if (e.object.name === "key_1_2") {
-                    if (key_2 === 360) {
-                        setKey_2(90)
-                    } else {
-                        setKey_2(key_2 + 90)
+                    setKey_2(key_2 + 90)
+                    if (key_2 > 0) {
+                        setKey_2(0)
                     }
                 }
                 if (e.object.name === "key_1_3") {
-                    if (key_3 === 360) {
-                        setKey_3(90)
-                    } else {
-                        setKey_3(key_3 + 90)
+                    setKey_3(key_3 + 90)
+                    if (key_3 > 0) {
+                        setKey_3(0)
                     }
                 }
 

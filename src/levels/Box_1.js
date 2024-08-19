@@ -26,8 +26,6 @@ export default function Box_1(props) {
         ref.current.children.filter((el) => el.name === "open").forEach((el) => {
             el.position.x = 0
         })
-
-        //console.log(nodes)
     }, [selectExit])
 
     useEffect(() => {
@@ -44,9 +42,6 @@ export default function Box_1(props) {
         const t = state.clock.getElapsedTime()
         defaultAnimation(ref, t)
 
-
-
-
         if (open) {
             ref.current.children.filter((el) => el.name === "open").forEach((el) => {
                 if (el.position.x < 1.6 && selectExit) {
@@ -54,6 +49,7 @@ export default function Box_1(props) {
                 }
             })
         }else {
+            dispatch({type:"QUEST_COUNT",preload:0});
             arrows.current.position.x = (1 + Math.sin(t / 0.2)) / 5;
         }
 

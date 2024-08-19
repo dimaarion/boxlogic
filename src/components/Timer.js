@@ -8,6 +8,7 @@ export default function Timer() {
     const dispatch = useDispatch();
     const selectPause = useSelector((state) => state.gamePause)
     const selectExit = useSelector((state) => state.gameExitLevel);
+    const selectLevel = useSelector((state) => state.level);
     const selectOpenLevelPanel = useSelector((state)=>state.openLevelPanel);
 
     useEffect(() => {
@@ -26,11 +27,11 @@ export default function Timer() {
     });
 
 useEffect(()=>{
-    if(!selectExit || selectOpenLevelPanel){
+    if(!selectExit){
         setMinute(0);
         setSeconds(0)
     }
-},[selectExit, selectOpenLevelPanel])
+},[selectExit,selectLevel])
 
     useEffect(() => {
         dispatch({type: "MINUTE", preload: minute})
