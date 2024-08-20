@@ -48,14 +48,17 @@ function App() {
     )
 }
 
-useGLTF.preload('./asset/obj/cub.glb');
-useGLTF.preload('./asset/obj/box2.glb');
-useGLTF.preload('./asset/obj/box3.glb');
-useGLTF.preload('./asset/obj/box4.glb');
-useGLTF.preload('./asset/obj/box5.glb');
-useGLTF.preload('./asset/obj/box6.glb');
-useGLTF.preload('./asset/obj/box7.glb');
-useGLTF.preload('./asset/obj/box8.glb');
-useGLTF.preload('./asset/obj/box9.glb');
+useGLTF.preload([
+    './asset/obj/cub.glb',
+    './asset/obj/box2.glb',
+    './asset/obj/box3.glb',
+    './asset/obj/box4.glb',
+    './asset/obj/box5.glb',
+    './asset/obj/box6.glb',
+    './asset/obj/box7.glb',
+    './asset/obj/box8.glb',
+    './asset/obj/box9.glb',
+    './asset/obj/box10.glb'
+]);
 
 export default App;

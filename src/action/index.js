@@ -44,6 +44,14 @@ export function numInArr(num) {
     return a;
 }
 
+export function numArr(num) {
+    let a = [];
+    for (let i = 0; i < num; i++) {
+        a[i] = i;
+    }
+    return a;
+}
+
 export function routable(n) {
     return Math.PI / 180 * n;
 }
@@ -54,4 +62,8 @@ export function distantCollege(point,min,max) {
 
 export function velocityInvert(t) {
     return (0.5 + Math.sin(t / 0.2)) / 20;
+}
+
+export function calcAngleDegrees(x, y) {
+    return (Math.atan2(y, x) * 180) / Math.PI;
 }
