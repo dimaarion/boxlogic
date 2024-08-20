@@ -364,22 +364,6 @@ export default function Box_10() {
                                  position={[1 + i / 30,(cx + (r * Math.cos(ang))) - 0.3,(cy + (r * Math.sin(ang)))- 0.3]} material={materials.oak} name="h_back" />
                 })}
 
-
-                {/* <mesh geometry={nodes.open_back_2.geometry} rotation={[routable(0), 0, 0]}
-                      position={[1.2, Math.PI / 10, -Math.PI / 10]} material={materials.oak} name="h_back"/><mesh geometry={nodes.open_back_2.geometry} rotation={[routable(0), 0, 0]}
-                       position={[1.2, 0, 0]} material={materials.oak} name="h_back"/>
-                    <mesh geometry={nodes.open_back_3.geometry} rotation={[routable(0), 0, 0]}
-                    position={[1.2,0,0]} material={materials.oak} name="h_back" />
-                    <mesh geometry={nodes.open_back_4.geometry} rotation={[routable(0), 0, 0]}
-                    position={[1.2,0,0]} material={materials.oak} name="h_back"/>
-                    <mesh geometry={nodes.open_back_5.geometry} rotation={[routable(0), 0, 0]}
-                    position={[1.2,0,0]} material={materials.oak} name="h_back"/>
-                    <mesh geometry={nodes.open_back_6.geometry} rotation={[routable(0), 0, 0]}
-                    position={[1.2,0,0]} material={materials.oak} name="h_back"/>
-                    <mesh geometry={nodes.open_back_7.geometry} rotation={[routable(0), 0, 0]}
-                    position={[1.2,0,0]} material={materials.oak} name="h_back"/>
-                    <mesh geometry={nodes.open_back_8.geometry} rotation={[routable(0), 0, 0]}
-                    position={[1.2,0,0]} material={materials.oak} name="h_back"/>*/}
             </group>
 
 
@@ -398,8 +382,9 @@ export default function Box_10() {
                 <mesh geometry={nodes.key_right_2_1.geometry} material={materials.oak} name="h_right_open_B"/>
                 <mesh geometry={nodes.key_right_2_2.geometry} material={materials.star} name="h_right_open_B"/>
             </group>
-
+<Text>20</Text>
         </group>
+
     )
 }
 
