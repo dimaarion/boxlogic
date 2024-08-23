@@ -22,10 +22,7 @@ export default function Box_5(props){
     const { nodes, materials } = useGLTF("./asset/obj/box5.glb");
 
     const initial = {cube1:false,cube2:false};
-
     const [cube, setCube] = useState(initial);
-
-
     const [obj, setObj] = useState({});
 
 
@@ -74,8 +71,6 @@ export default function Box_5(props){
 
         }
 
-
-
     },[selectExit])
 
     return (
@@ -93,13 +88,11 @@ export default function Box_5(props){
                 }
             }}>
 
-
-
-            <mesh receiveShadow castShadow geometry={nodes.box.geometry}  material={materials.box} name = "box"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_1.geometry}  material={materials.box} name = "box"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_2.geometry}  material={materials.box} name = "key_1"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_3.geometry}  material={materials.box} name = "open"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_4.geometry}  material={materials.box} name = "key_2"  />
+            <mesh  geometry={nodes.box.geometry}  material={materials.box} name = "box"  />
+            <mesh  geometry={nodes.box_1.geometry}  material={materials.box} name = "box"  />
+            <mesh  geometry={nodes.box_2.geometry}  material={materials.box} name = "key_1"  />
+            <mesh  geometry={nodes.box_3.geometry}  material={materials.box} name = "open"  />
+            <mesh  geometry={nodes.box_4.geometry}  material={materials.box} name = "key_2"  />
         </group>
     )
 }

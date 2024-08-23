@@ -21,19 +21,14 @@ export default function Box_4(){
 
     const { nodes, materials } = useGLTF("./asset/obj/box4.glb")
     const [cube, setCube] = useState({cube1:false});
-
-
     const [obj, setObj] = useState({});
 
     useEffect(()=>{
-        console.log(nodes)
-        console.log(materials)
+      //  console.log(nodes)
+      //  console.log(materials)
 
     },[selectRestart])
 
-    useEffect(()=>{
-      //  dispatch({type:"LEVEL",preload:props.level?props.level:1})
-    },[])
 
     let speed = 0.1;
     let position = 3
@@ -83,9 +78,9 @@ if(!selectExit){
                     setCube({cube1:false})
                 }
             }}>
-            <mesh receiveShadow castShadow geometry={nodes.box_1.geometry}  material={materials.box} name = "box"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_2.geometry} material={materials.box} name = "open"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_3.geometry}  material={materials.box} name = "key"  />
+            <mesh  geometry={nodes.box_1.geometry}  material={materials.box} name = "box"  />
+            <mesh  geometry={nodes.box_2.geometry} material={materials.box} name = "open"  />
+            <mesh  geometry={nodes.box_3.geometry}  material={materials.box} name = "key"  />
         </group>
     )
 }

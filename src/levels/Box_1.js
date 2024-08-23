@@ -71,14 +71,12 @@ export default function Box_1(props) {
                 }
 
             }}>
-
-            <mesh receiveShadow castShadow geometry={nodes.box001.geometry} material={materials.box} name="key_1"/>
-            <mesh receiveShadow castShadow geometry={nodes.box001_1.geometry} material={materials.open} name="open"/>
+            <mesh geometry={nodes.box001.geometry} material={materials.box} name="key_1"/>
+            <mesh geometry={nodes.box001_1.geometry} material={materials.open} name="open"/>
             <group ref = {arrows}>
-                {point && !open?<mesh receiveShadow castShadow geometry={nodes.arrows.geometry} position={[1.2, 0, 0]}
+                {point && !open?<mesh geometry={nodes.arrows.geometry} position={[1.2, 0, 0]}
                              rotation={[0, 3.1, 0]} scale={0.1} material={materials.arrows} name="arrows"/>:""}
             </group>
-
         </group>
     )
 }

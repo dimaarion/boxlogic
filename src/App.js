@@ -14,6 +14,7 @@ import OpenLevelList from "./components/OpenLevelList";
 import BgPause from "./components/BgPause";
 import LevelMenu from "./components/LevelMenu";
 import Question from "./components/Question";
+import {Physics} from "@react-three/rapier";
 
 
 

@@ -73,6 +73,7 @@ export default function Box_9() {
     useEffect(() => {
       //  console.log(nodes)
         //  console.log(materials)
+        dispatch({type: "LEVEL", preload:10})
     }, [])
 
 
@@ -135,13 +136,13 @@ export default function Box_9() {
 
         if (keyRotateOpen) {
             if (distantCollege(x, 0, window.innerWidth / 2)) {
-                setKey_open(key_open + 0.5)
+                setKey_open(key_open + 2)
                 if (key_open > 360) {
                     setKey_open(0);
                 }
             }
             if (distantCollege(x, window.innerWidth / 2, window.innerWidth)) {
-                setKey_open(key_open - 0.5)
+                setKey_open(key_open - 2)
                 if (key_open < -360) {
                     setKey_open(0);
                 }

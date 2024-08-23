@@ -1,9 +1,8 @@
 import * as THREE from 'three'
 import {useRef, useState, useEffect} from "react"
-import {useFrame, useLoader} from "@react-three/fiber"
-import {useGLTF, useFBX, useTexture} from "@react-three/drei"
+import {useFrame} from "@react-three/fiber"
+import {useGLTF} from "@react-three/drei"
 import {proxy} from "valtio";
-import {Physics, RigidBody} from '@react-three/rapier'
 import {useDispatch, useSelector} from "react-redux";
 import {defaultAnimation, distantCollege, routable, velocityInvert} from "../action";
 
@@ -21,6 +20,14 @@ export default function Box_8(props) {
     const ref = useRef();
     const alf = useRef();
     const alf2 = useRef();
+    const key_1_1 = useRef();
+    const key_1_2 = useRef();
+    const key_1_3 = useRef();
+    const key_1_4 = useRef();
+    const key_1_5 = useRef();
+    const key_1_6 = useRef();
+    const key_1_7 = useRef();
+
     const initial = {cube1: false, cube2: false, cube3: false, cube4: false};
 
 
@@ -31,23 +38,17 @@ export default function Box_8(props) {
     const [key_1, setKey_1] = useState(0);
     const [key_2, setKey_2] = useState(0);
     const [key_3, setKey_3] = useState(0);
-    const [key_1_1, setKey_1_1] = useState(0);
-    const [key_1_2, setKey_1_2] = useState(0);
-    const [key_1_3, setKey_1_3] = useState(0);
-    const [key_1_4, setKey_1_4] = useState(0);
-    const [key_1_5, setKey_1_5] = useState(0);
-    const [key_1_6, setKey_1_6] = useState(0);
-    const [key_1_7, setKey_1_7] = useState(0);
+
+
+
+
+
+
+
     const [key_open, setKey_open] = useState(0);
     const [key_alf, setKey_alf] = useState(0);
     const [keyRotateAlf, setKeyRotateAlf] = useState(false);
-    const [keyRotate, setKeyRotate] = useState(false);
-    const [keyRotate2, setKeyRotate2] = useState(false);
-    const [keyRotate3, setKeyRotate3] = useState(false);
-    const [keyRotate4, setKeyRotate4] = useState(false);
-    const [keyRotate5, setKeyRotate5] = useState(false);
-    const [keyRotate6, setKeyRotate6] = useState(false);
-    const [keyRotate7, setKeyRotate7] = useState(false);
+    const [keyRotate, setKeyRotate] = useState("");
     const [keyRotateOpen, setKeyRotateOpen] = useState(false);
     const [alfArr, setAlfArr] = useState([]);
     const [open_2, setOpen_2] = useState(false);
@@ -57,7 +58,7 @@ export default function Box_8(props) {
     let speed = 0.05;
     let position = 1;
     let speedOpen = 2;
-    let speedKeyRotate = 1.5
+    let speedKeyRotate = 0.05;
 
 
     useFrame((state) => {
@@ -72,13 +73,13 @@ export default function Box_8(props) {
                 dispatch({type:"QUEST_COUNT",preload:1});
             });
 
-            if (distantCollege(key_1_1, 32, 100)
-                && distantCollege(key_1_2, 75, 142)
-                && distantCollege(key_1_3, 110, 186)
-                && distantCollege(key_1_4, 208, 284)
-                && distantCollege(key_1_5, 208, 284)
-                && distantCollege(key_1_6, 0, 54)
-                && distantCollege(key_1_7, 298, 355)
+            if (distantCollege(key_1_1.current.rotation.x, 0.6, 1.6)
+                && distantCollege(key_1_2.current.rotation.x, 1.4, 2.2)
+                && distantCollege(key_1_3.current.rotation.x, 2.2, 3)
+                && distantCollege(key_1_4.current.rotation.x, 3.7, 4.6)
+                && distantCollege(key_1_5.current.rotation.x, 3.7, 4.6)
+                && distantCollege(key_1_6.current.rotation.x, 0, 1)
+                && distantCollege(key_1_7.current.rotation.x, 2, 3.2)
             ) {
                 ref.current.children.filter((el) => el.name === "open_2").forEach((el) => {
                     if (el.position.z > -position) {
@@ -106,52 +107,52 @@ export default function Box_8(props) {
                 }
             }
 
-            if (keyRotate) {
-                setKey_1_1(key_1_1 + speedKeyRotate);
-                if (key_1_1 > 360) {
-                    setKey_1_1(0);
+            if (keyRotate === "key_2_1") {
+                key_1_1.current.rotation.x += speedKeyRotate;
+                if (key_1_1.current.rotation.x > 6.24) {
+                    key_1_1.current.rotation.x = 0;
                 }
             }
 
-            if (keyRotate2) {
-                setKey_1_2(key_1_2 + speedKeyRotate)
-                if (key_1_2 > 360) {
-                    setKey_1_2(0);
+            if (keyRotate === "key_2_2") {
+                key_1_2.current.rotation.x += speedKeyRotate;
+                if (key_1_2.current.rotation.x > 6.24) {
+                    key_1_2.current.rotation.x = 0;
                 }
             }
 
-            if (keyRotate3) {
-                setKey_1_3(key_1_3 + speedKeyRotate)
-                if (key_1_3 > 360) {
-                    setKey_1_3(0);
+            if (keyRotate === "key_2_3") {
+                key_1_3.current.rotation.x += speedKeyRotate;
+                if (key_1_3.current.rotation.x > 6.24) {
+                    key_1_3.current.rotation.x = 0;
                 }
             }
 
-            if (keyRotate4) {
-                setKey_1_4(key_1_4 + speedKeyRotate)
-                if (key_1_4 > 360) {
-                    setKey_1_4(0);
+            if (keyRotate === "key_2_4") {
+                key_1_4.current.rotation.x += speedKeyRotate;
+                if (key_1_4.current.rotation.x > 6.24) {
+                    key_1_4.current.rotation.x = 0;
                 }
             }
 
-            if (keyRotate5) {
-                setKey_1_5(key_1_5 + speedKeyRotate)
-                if (key_1_5 > 360) {
-                    setKey_1_5(0);
+            if (keyRotate === "key_2_5") {
+                key_1_5.current.rotation.x += speedKeyRotate;
+                if (key_1_5.current.rotation.x > 6.24) {
+                    key_1_5.current.rotation.x = 0;
                 }
             }
 
-            if (keyRotate6) {
-                setKey_1_6(key_1_6 + speedKeyRotate)
-                if (key_1_6 > 360) {
-                    setKey_1_6(0);
+            if (keyRotate === "key_2_6") {
+                key_1_6.current.rotation.x += speedKeyRotate;
+                if (key_1_6.current.rotation.x > 6.24) {
+                    key_1_6.current.rotation.x = 0;
                 }
             }
 
-            if (keyRotate7) {
-                setKey_1_7(key_1_7 + speedKeyRotate)
-                if (key_1_7 > 360) {
-                    setKey_1_7(0);
+            if (keyRotate === "key_2_7") {
+                key_1_7.current.rotation.x += speedKeyRotate;
+                if (key_1_7.current.rotation.x > 6.24) {
+                    key_1_7.current.rotation.x = 0;
                 }
             }
 
@@ -162,40 +163,27 @@ export default function Box_8(props) {
                 el.position.y = 0;
             });
 
-            if (keyRotate) {
-                ref.current.children.filter((el) => el.name === "key_2_1").forEach((el) => {
-                    el.rotation.x = velocityInvert(t);
-                });
+            if (keyRotate === "key_2_1") {
+                    key_1_1.current.rotation.x = velocityInvert(t);
             }
-            if (keyRotate2) {
-                ref.current.children.filter((el) => el.name === "key_2_2").forEach((el) => {
-                    el.rotation.x = velocityInvert(t);
-                });
+
+            if (keyRotate === "key_2_2") {
+                key_1_2.current.rotation.x = velocityInvert(t);
             }
-            if (keyRotate3) {
-                ref.current.children.filter((el) => el.name === "key_2_3").forEach((el) => {
-                    el.rotation.x = velocityInvert(t);
-                });
+            if (keyRotate === "key_2_3") {
+                key_1_3.current.rotation.x = velocityInvert(t);
             }
-            if (keyRotate4) {
-                ref.current.children.filter((el) => el.name === "key_2_4").forEach((el) => {
-                    el.rotation.x = velocityInvert(t);
-                });
+            if (keyRotate === "key_2_4") {
+                key_1_4.current.rotation.x = velocityInvert(t);
             }
-            if (keyRotate5) {
-                ref.current.children.filter((el) => el.name === "key_2_5").forEach((el) => {
-                    el.rotation.x = velocityInvert(t);
-                });
+            if (keyRotate === "key_2_5") {
+                key_1_5.current.rotation.x = velocityInvert(t);
             }
-            if (keyRotate6) {
-                ref.current.children.filter((el) => el.name === "key_2_6").forEach((el) => {
-                    el.rotation.x = velocityInvert(t);
-                });
+            if (keyRotate === "key_2_6") {
+                key_1_6.current.rotation.x = velocityInvert(t);
             }
-            if (keyRotate7) {
-                ref.current.children.filter((el) => el.name === "key_2_7").forEach((el) => {
-                    el.rotation.x = velocityInvert(t);
-                });
+            if (keyRotate === "key_2_7") {
+                key_1_7.current.rotation.x = velocityInvert(t);
             }
             if (keyRotateAlf) {
                 alf.current.children.filter((el) => el.name === "alf").forEach((el) => {
@@ -249,13 +237,13 @@ export default function Box_8(props) {
             setKey_1(0);
             setKey_2(0);
             setKey_3(0);
-            setKey_1_1(0);
-            setKey_1_2(0);
-            setKey_1_3(0);
-            setKey_1_4(0);
-            setKey_1_5(0);
-            setKey_1_6(0);
-            setKey_1_7(0);
+            key_1_1.current.rotation.x = 0;
+            key_1_2.current.rotation.x = 0;
+            key_1_3.current.rotation.x = 0;
+            key_1_4.current.rotation.x = 0;
+            key_1_5.current.rotation.x = 0;
+            key_1_6.current.rotation.x = 0;
+            key_1_7.current.rotation.x = 0;
             setKey_alf(0);
             setKey_open(0);
             setAlfArr([]);
@@ -285,29 +273,7 @@ export default function Box_8(props) {
             onPointerMissed={() => (state.current = null)}
             onPointerDown={(e) => {
                 e.stopPropagation();
-
-                if (e.object.name === "key_2_1") {
-                    setKeyRotate(true);
-                }
-                if (e.object.name === "key_2_2") {
-                    setKeyRotate2(true);
-                }
-                if (e.object.name === "key_2_3") {
-                    setKeyRotate3(true);
-                }
-                if (e.object.name === "key_2_4") {
-                    setKeyRotate4(true);
-                }
-
-                if (e.object.name === "key_2_5") {
-                    setKeyRotate5(true);
-                }
-                if (e.object.name === "key_2_6") {
-                    setKeyRotate6(true);
-                }
-                if (e.object.name === "key_2_7") {
-                    setKeyRotate7(true);
-                }
+                setKeyRotate(e.object.name)
 
                 if (e.object.name === "open_key") {
                     setKeyRotateOpen(true);
@@ -321,13 +287,7 @@ export default function Box_8(props) {
             }}
             onPointerUp={(e) => {
                 e.stopPropagation();
-                setKeyRotate7(false);
-                setKeyRotate(false);
-                setKeyRotate2(false);
-                setKeyRotate3(false);
-                setKeyRotate4(false);
-                setKeyRotate5(false);
-                setKeyRotate6(false);
+                setKeyRotate("");
                 setKeyRotateOpen(false);
                 setKeyRotateAlf(false);
                 if (distantCollege(key_alf, -350, -340) && alfArr.length === 0) {
@@ -405,20 +365,20 @@ export default function Box_8(props) {
             </group>
 
 
-            <mesh geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[1.65, 1.6, -1.7]}
-                  rotation={[routable(key_1_1), 0, routable(90)]} material={materials.keyRotation} name="key_2_1"/>
-            <mesh geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[1.08, 1.6, -1.7]}
-                  rotation={[routable(key_1_2), 0, routable(90)]} material={materials.keyRotation} name="key_2_2"/>
-            <mesh geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[0.55, 1.6, -1.7]}
-                  rotation={[routable(key_1_3), 0, routable(90)]} material={materials.keyRotation} name="key_2_3"/>
-            <mesh geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[-0.02, 1.6, -1.7]}
-                  rotation={[routable(key_1_4), 0, routable(90)]} material={materials.keyRotation} name="key_2_4"/>
-            <mesh geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[-0.56, 1.6, -1.7]}
-                  rotation={[routable(key_1_5), 0, routable(90)]} material={materials.keyRotation} name="key_2_5"/>
-            <mesh geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[-1.11, 1.6, -1.7]}
-                  rotation={[routable(key_1_6), 0, routable(90)]} material={materials.keyRotation} name="key_2_6"/>
-            <mesh geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[-1.65, 1.6, -1.7]}
-                  rotation={[routable(key_1_7), 0, routable(90)]} material={materials.keyRotation} name="key_2_7"/>
+            <mesh ref = {key_1_1} geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[1.65, 1.6, -1.7]}
+                  rotation={[0, 0, routable(90)]} material={materials.keyRotation} name="key_2_1"/>
+            <mesh ref = {key_1_2} geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[1.08, 1.6, -1.7]}
+                  rotation={[0, 0, routable(90)]} material={materials.keyRotation} name="key_2_2"/>
+            <mesh ref = {key_1_3} geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[0.55, 1.6, -1.7]}
+                  rotation={[0, 0, routable(90)]} material={materials.keyRotation} name="key_2_3"/>
+            <mesh ref = {key_1_4} geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[-0.02, 1.6, -1.7]}
+                  rotation={[0, 0, routable(90)]} material={materials.keyRotation} name="key_2_4"/>
+            <mesh ref = {key_1_5} geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[-0.56, 1.6, -1.7]}
+                  rotation={[0, 0, routable(90)]} material={materials.keyRotation} name="key_2_5"/>
+            <mesh ref = {key_1_6} geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[-1.11, 1.6, -1.7]}
+                  rotation={[0, 0, routable(90)]} material={materials.keyRotation} name="key_2_6"/>
+            <mesh ref = {key_1_7} geometry={nodes.key_1_geom.geometry} scale={[0.78, 0.2, 0.78]} position={[-1.65, 1.6, -1.7]}
+                  rotation={[0, 0, routable(90)]} material={materials.keyRotation} name="key_2_7"/>
 
 
             <group ref={alf} position={[1.71, 0.1, 1.6]} rotation={[routable(key_alf) + 0.19, 0, 0]}>

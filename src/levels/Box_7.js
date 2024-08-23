@@ -120,13 +120,13 @@ if(!selectExit || open){
 
 
 
-            <mesh receiveShadow castShadow geometry={nodes.box_1.geometry}  material={materials.box} name = "box"  />
+            <mesh  geometry={nodes.box_1.geometry}  material={materials.box} name = "box"  />
             <group ref = {head}>
-                <mesh receiveShadow castShadow geometry={nodes.box_2.geometry}  material={materials.key_1} name = "key_1"  />
-                <mesh receiveShadow castShadow geometry={nodes.box_3.geometry}  material={materials.key_1} name = "key_2"  />
-                <mesh receiveShadow castShadow geometry={nodes.box_4.geometry}  material={materials.key_1} name = "key_3"  />
-                <mesh receiveShadow castShadow geometry={nodes.box_5.geometry}  material={materials.open} name = "open"  />
-                <mesh receiveShadow castShadow geometry={nodes.box_6.geometry}  material={materials.key_1} name = "key_4"  />
+                <mesh  geometry={nodes.box_2.geometry}  material={materials.key_1} name = "key_1"  />
+                <mesh  geometry={nodes.box_3.geometry}  material={materials.key_1} name = "key_2"  />
+                <mesh  geometry={nodes.box_4.geometry}  material={materials.key_1} name = "key_3"  />
+                <mesh  geometry={nodes.box_5.geometry}  material={materials.open} name = "open"  />
+                <mesh  geometry={nodes.box_6.geometry}  material={materials.key_1} name = "key_4"  />
             </group>
 
         </group>

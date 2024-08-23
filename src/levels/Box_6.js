@@ -45,7 +45,6 @@ export default function Box_6(props){
         const t = state.clock.getElapsedTime()
         defaultAnimation(ref,t)
 
-
         if(obj.name === "key_1"){
             setCube({cube1:true,cube2: false,cube3: false})
             if(obj.position.x > -position){
@@ -103,11 +102,11 @@ if(!selectExit){
 
 
 
-            <mesh receiveShadow castShadow geometry={nodes.box.geometry}  material={materials.key_3} name = "key_3"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_1.geometry}  material={materials.box} name = "box"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_2.geometry}  material={materials.open} name = "open"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_3.geometry}  material={materials.key_2} name = "key_2"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_4.geometry}  material={materials.key_1} name = "key_1"  />
+            <mesh  geometry={nodes.box.geometry}  material={materials.key_3} name = "key_3"  />
+            <mesh  geometry={nodes.box_1.geometry}  material={materials.box} name = "box"  />
+            <mesh  geometry={nodes.box_2.geometry}  material={materials.open} name = "open"  />
+            <mesh  geometry={nodes.box_3.geometry}  material={materials.key_2} name = "key_2"  />
+            <mesh  geometry={nodes.box_4.geometry}  material={materials.key_1} name = "key_1"  />
         </group>
     )
 }

@@ -67,3 +67,7 @@ export function velocityInvert(t) {
 export function calcAngleDegrees(x, y) {
     return (Math.atan2(y, x) * 180) / Math.PI;
 }
+
+export function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}

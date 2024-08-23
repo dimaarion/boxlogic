@@ -11,7 +11,6 @@ import {defaultAnimation} from "../action";
 export default function Box_2(props){
     const dispatch = useDispatch();
     const selectExit = useSelector((state)=>state.gameExitLevel);
-    const selectLevel = useSelector((state)=>state.level);
     const selectRestart = useSelector((state)=>state.restart);
 
     const state = proxy({
@@ -83,9 +82,9 @@ if(!selectExit){
                     setCube({cube1:false})
                 }
             }}>
-            <mesh receiveShadow castShadow geometry={nodes.box_1.geometry} material={materials.cub1} name = "cub1"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_2.geometry} material={materials.box} name = "box"  />
-            <mesh receiveShadow castShadow geometry={nodes.box_3.geometry} material={materials.open} name = "open"  />
+            <mesh  geometry={nodes.box_1.geometry} material={materials.cub1} name = "cub1"  />
+            <mesh  geometry={nodes.box_2.geometry} material={materials.box} name = "box"  />
+            <mesh  geometry={nodes.box_3.geometry} material={materials.open} name = "open"  />
         </group>
     )
 }
