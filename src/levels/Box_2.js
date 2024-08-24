@@ -12,6 +12,7 @@ export default function Box_2(props){
     const dispatch = useDispatch();
     const selectExit = useSelector((state)=>state.gameExitLevel);
     const selectRestart = useSelector((state)=>state.restart);
+    const selectLevel = useSelector((state)=>state.level);
 
     const state = proxy({
         current: null
@@ -28,8 +29,8 @@ export default function Box_2(props){
     useEffect(()=>{
      //   console.log(nodes)
      //   console.log(materials)
-
-    },[selectRestart])
+        document.querySelector("body").style.backgroundImage = "url('./asset/bg/2.jpg')"
+    },[selectLevel])
 
     useEffect(()=>{
         dispatch({type:"QUEST_OPEN",preload:false})
@@ -75,7 +76,6 @@ if(!selectExit){
             onPointerMissed={() => (state.current = null)}
             onClick={(e) => {
                 e.stopPropagation();
-                console.log(e.object.name)
                 setObj(e.object)
                 if(cube.cube1 && e.object.name === "open"){
                     dispatch({type:"EXIT",preload:true})

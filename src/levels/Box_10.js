@@ -18,7 +18,7 @@ import {
 export default function Box_10() {
     const dispatch = useDispatch();
     const selectExit = useSelector((state) => state.gameExitLevel);
-
+    const selectLevel = useSelector((state) => state.level);
 
     const state = proxy({
         current: null
@@ -57,6 +57,12 @@ export default function Box_10() {
     const open_6_key_2 = useRef();
     const open_6_key_3 = useRef();
     const open_6_key_4 = useRef();
+    const exit_box = useRef();
+    const exit_key = useRef();
+    const exit_open_1 = useRef();
+    const exit_open_2 = useRef();
+    const h_exit_1 = useRef();
+    const h_exit_2 = useRef();
 
     const {nodes, materials} = useGLTF("./asset/obj/box10.glb")
     const [exit, setExit] = useState(false);
@@ -71,8 +77,8 @@ export default function Box_10() {
     useEffect(() => {
         console.log(nodes)
         //  console.log(materials)
-
-    }, [])
+        document.querySelector("body").style.backgroundImage = "url('./asset/bg/ind.webp')"
+    }, [selectLevel])
 
 
     useFrame((state, delta) => {
@@ -99,7 +105,7 @@ export default function Box_10() {
         }
         if (name === "h_right_open_B" && open_4.current.position.x > 1) {
             hRightOpenB.current.rotation.z += 0.05;
-            if(hRightOpenB.current.rotation.z > 12.4){
+            if (hRightOpenB.current.rotation.z > 12.4) {
                 hRightOpenB.current.rotation.z = 0
             }
 
@@ -108,14 +114,14 @@ export default function Box_10() {
         if (name === "h_right_open_A" && open_4.current.position.x > 1) {
 
             hRightOpenA.current.rotation.z += 0.05;
-            if(hRightOpenA.current.rotation.z > 12.4){
-               hRightOpenA.current.rotation.z = 0;
+            if (hRightOpenA.current.rotation.z > 12.4) {
+                hRightOpenA.current.rotation.z = 0;
             }
 
         }
 
-        if(distantCollege(hRightOpenB.current.rotation.z,5,6.5) && distantCollege(hRightOpenA.current.rotation.z,5,6.5)){
-            if(openRight.current.position.x < 0.8){
+        if (distantCollege(hRightOpenB.current.rotation.z, 5, 6.5) && distantCollege(hRightOpenA.current.rotation.z, 5, 6.5)) {
+            if (openRight.current.position.x < 0.8) {
                 openRight.current.position.x += 0.05;
             }
 
@@ -167,13 +173,13 @@ export default function Box_10() {
             }
         });
 
-        if(name === "key_open_2_5"){
+        if (name === "key_open_2_5") {
 
             open_2_5.current.rotation.z -= 0.05;
-            if(open_2_1.current.position.x === open_2_val_1.current.position.x
+            if (open_2_1.current.position.x === open_2_val_1.current.position.x
                 && open_2_2.current.position.x === open_2_val_2.current.position.x
                 && open_2_3.current.position.x === open_2_val_3.current.position.x
-                && open_2_4.current.position.x === open_2_val_4.current.position.x){
+                && open_2_4.current.position.x === open_2_val_4.current.position.x) {
                 open_2_1.current.rotation.z -= 0.05;
                 open_2_2.current.rotation.z += 0.05;
                 open_2_3.current.rotation.z -= 0.05;
@@ -181,29 +187,105 @@ export default function Box_10() {
                 open_2_val_open_3.current.rotation.z += 0.05;
                 open_2_val_open_4.current.rotation.z += 0.05;
                 open_4_rotate_1.current.rotation.z += 0.05;
-                if(open_4.current.position.x < 1.2){
+                if (open_4.current.position.x < 1.2) {
                     open_4.current.position.x += 0.01
                 }
-
+                dispatch({type:"QUEST_COUNT",preload:1});
             }
         }
 
-        if(name === open_6_key_1.current.name){
-            open_6_key_1.current.rotation.y += 0.05
+        if (name === open_6_key_1.current.name) {
+            open_6_key_1.current.rotation.y += 0.05;
+            if (open_6_key_1.current.rotation.y > 6.3) {
+                open_6_key_1.current.rotation.y = 0;
+            }
         }
-        if(name === open_6_key_2.current.name){
-            open_6_key_2.current.rotation.y += 0.05
+        if (name === open_6_key_2.current.name) {
+            open_6_key_2.current.rotation.y += 0.05;
+            if (open_6_key_2.current.rotation.y > 6.3) {
+                open_6_key_2.current.rotation.y = 0;
+            }
         }
-        if(name === open_6_key_3.current.name){
-            open_6_key_3.current.rotation.y += 0.05
+        if (name === open_6_key_3.current.name) {
+            open_6_key_3.current.rotation.y += 0.05;
+            if (open_6_key_3.current.rotation.y > 6.3) {
+                open_6_key_3.current.rotation.y = 0;
+            }
         }
-        if(name === open_6_key_4.current.name){
-            open_6_key_4.current.rotation.y += 0.05
+        if (name === open_6_key_4.current.name) {
+            open_6_key_4.current.rotation.y += 0.05;
+            if (open_6_key_4.current.rotation.y > 6.3) {
+                open_6_key_4.current.rotation.y = 0;
+            }
         }
+        if (distantCollege(open_6_key_2.current.rotation.y, 1.8, 2.3) && distantCollege(open_6_key_4.current.rotation.y, 3.8, 4.4)) {
+            if (exit_open_1.current.position.z > -0.2) {
+                exit_open_1.current.position.z -= 0.05;
+                h_exit_1.current.rotation.z += 0.05;
+            }
+
+        }
+        if ((distantCollege(open_6_key_1.current.rotation.y, 5.9, 6.3) || distantCollege(open_6_key_1.current.rotation.y, 0, 0.2)) && distantCollege(open_6_key_3.current.rotation.y, 0.7, 1.3)) {
+            if (exit_open_2.current.position.z < 0.2) {
+                exit_open_2.current.position.z += 0.05;
+                h_exit_2.current.rotation.z -= 0.05;
+            }
+        }
+
+
+
+
+        if(exit_open_1.current.position.z < -0.1 && exit_open_2.current.position.z > 0.1){
+            if (exit_box.current.position.y < 1) {
+                exit_box.current.position.y += 0.05;
+                exit_key.current.position.y += 0.05;
+                h_exit_1.current.position.y += 0.05;
+                h_exit_2.current.position.y += 0.05;
+            }
+            setOpen(true)
+        }
+
+
     })
 
     useEffect(() => {
-
+        if (!selectExit) {
+            setOpen(false);
+            exit_box.current.position.y = 0;
+            exit_key.current.position.y = 0;
+            open_6_key_1.current.rotation.y = 4;
+            open_6_key_2.current.rotation.y = 3;
+            open_6_key_3.current.rotation.y = 6;
+            open_6_key_4.current.rotation.y = 1;
+            open_2_1.current.rotation.z = 0;
+            open_2_2.current.rotation.z = 0;
+            open_2_3.current.rotation.z = 0;
+            open_2_4.current.rotation.z = 0;
+            open_2_val_open_3.current.rotation.z = 0;
+            open_2_val_open_4.current.rotation.z = 0;
+            open_4_rotate_1.current.rotation.z = 0;
+            open_4.current.position.x = 0;
+            open_2_5.current.rotation.z = 0;
+            openRight.current.position.x = 0;
+            hRightOpenB.current.rotation.z = 4;
+            hRightOpenA.current.rotation.z = 4;
+            open_2_1.current.position.y = -1.5;
+            open_2_1.current.position.x = 0.5;
+            open_2_2.current.position.y = -1.5;
+            open_2_2.current.position.x = -0.2;
+            open_2_3.current.position.y = -1.5;
+            open_2_3.current.position.x = -1;
+            open_2_4.current.position.y = -1.5;
+            open_2_4.current.position.x = 1;
+            exit_open_1.current.position.z = 0;
+            exit_open_2.current.position.z = 0;
+            h_exit_1.current.position.y = 1.15;
+            h_exit_2.current.position.y = 1.15;
+            open_5.current.children.forEach((el, i) => {
+                el.rotation.y = i * 2;
+            });
+            dispatch({type:"QUEST_COUNT",preload:0});
+        }
     }, [selectExit])
 
 
@@ -276,14 +358,14 @@ export default function Box_10() {
 
             }}>
 
-            <mesh  geometry={nodes.box_1.geometry} material={materials.def} name="box"/>
+            <mesh geometry={nodes.box_1.geometry} material={materials.def} name="box"/>
 
             <mesh ref={openRight} geometry={nodes.box_2.geometry} material={materials.birch}
                   name="open_right1"/>
 
             <mesh ref={rotateClockCenterVal} geometry={nodes.clock_val.geometry} material={materials.birch}
                   name="rotateClockCenterVal"/>
-            <mesh ref = {open_4} geometry={nodes.open_4.geometry} material={materials.birch}
+            <mesh ref={open_4} geometry={nodes.open_4.geometry} material={materials.birch}
                   name="open_4"/>
             <mesh ref={rotateClockCenter} geometry={nodes.clock_h.geometry} material={materials.nuc}
                   name="clock_rotate"/>
@@ -293,18 +375,23 @@ export default function Box_10() {
                   name="clock_rotate"/>
             <mesh ref={openClockRotate} geometry={nodes.open_3.geometry} material={materials.open_3}
                   name="openClockRotate"/>
-            <mesh geometry={nodes.exit_1.geometry} material={materials.exit}
-                  name="exit"/>
-            <mesh geometry={nodes.exit_2.geometry} material={materials.exit}
-                  name="exit"/>
-            <mesh geometry={nodes.exit_3.geometry} material={materials.exit}
-                  name="exit"/>
-            <mesh geometry={nodes.exit_4.geometry} material={materials.exit_open_1}
-                  name="exit"/>
-            <mesh geometry={nodes.exit_5.geometry} material={materials.exit_open_2}
-                  name="exit"/>
 
-            <mesh ref = {open_4_rotate_1} geometry={nodes.open_4_rotate.geometry}  position={[0.5, 0.7, 1.04]} material={materials.open_4_rotate}
+            <group ref={exit_box}>
+                <mesh geometry={nodes.exit_1.geometry} material={materials.exit}
+                      name="exit"/>
+                <mesh geometry={nodes.exit_2.geometry} material={materials.exit}
+                      name="exit"/>
+                <mesh geometry={nodes.exit_3.geometry} material={materials.exit}
+                      name="exit"/>
+                <mesh ref={exit_open_1} geometry={nodes.exit_4.geometry} material={materials.exit_open_1}
+                      name="exit"/>
+                <mesh ref={exit_open_2} geometry={nodes.exit_5.geometry} material={materials.exit_open_2}
+                      name="exit"/>
+            </group>
+
+
+            <mesh ref={open_4_rotate_1} geometry={nodes.open_4_rotate.geometry} position={[0.5, 0.7, 1.04]}
+                  material={materials.open_4_rotate}
                   name="h_right_open"/>
             <mesh geometry={nodes.open_4_rotate.geometry} position={[-0.7, -0.22, 1.04]}
                   material={materials.open_4_rotate} name="h_right_open"/>
@@ -315,10 +402,11 @@ export default function Box_10() {
             <mesh geometry={nodes.open_4_rotate.geometry} position={[-0.7, -0.87, 1.04]}
                   material={materials.open_4_rotate} name="h_right_open"/>
 
-            <mesh ref = {open_2_val_open_4} geometry={nodes.open_4_rotate.geometry} position={[1.15, 0.7, 1.04]}
+            <mesh ref={open_2_val_open_4} geometry={nodes.open_4_rotate.geometry} position={[1.15, 0.7, 1.04]}
                   material={materials.open_4_rotate} name="h_right_open"/>
 
-            <mesh ref = {open_2_val_open_3} geometry={nodes.open_2_0.geometry} position={[1.15, 0.7, -1.04]} material={materials.open_2_0}
+            <mesh ref={open_2_val_open_3} geometry={nodes.open_2_0.geometry} position={[1.15, 0.7, -1.04]}
+                  material={materials.open_2_0}
                   name="h_right_open"/>
 
             <group ref={hBack}>
@@ -331,6 +419,15 @@ export default function Box_10() {
                 <mesh geometry={nodes.open_4_rotate.geometry} rotation={[0, routable(90), 0]} scale={[1, 1, 2]}
                       position={[1.2, -0.45, 0.55]} material={materials.open_4_rotate} name="h_back"/>
             </group>
+
+
+                <mesh ref = {h_exit_1} geometry={nodes.open_4_rotate.geometry} rotation={[routable(90),0 , 0]} scale={[1, 1, 2]}
+                      position={[0.18, 1.15, -0.16]} material={materials.open_4_rotate} name="h_exit"/>
+                <mesh ref = {h_exit_2} geometry={nodes.open_4_rotate.geometry} rotation={[routable(90),0 , 0]} scale={[1, 1, 2]}
+                      position={[-0.18, 1.15, 0.16]} material={materials.open_4_rotate} name="h_exit"/>
+
+
+
 
             <group ref={openBack}>
                 {numArr(number).map((el, i) => {
@@ -353,10 +450,12 @@ export default function Box_10() {
             <mesh ref={arrow_hour} geometry={nodes.arrow_hour.geometry} material={materials.hour} name="clock_rotate"/>
 
 
-            <mesh ref={hRightOpenA}  position={[-0.4, 0.4, 1.01]}
-                  geometry={nodes.oak1.geometry} rotation={[0, 0, routable(90)]} material={materials.oak1} name="h_right_open_A"/>
-            <mesh ref={hRightOpenB}  position={[0.45, -0.2, 1.01]}
-                  geometry={nodes.oak2.geometry} rotation={[0, 0, routable(90)]} material={materials.oak_2} name="h_right_open_B"/>
+            <mesh ref={hRightOpenA} position={[-0.4, 0.4, 1.01]}
+                  geometry={nodes.oak1.geometry} material={materials.oak1}
+                  name="h_right_open_A"/>
+            <mesh ref={hRightOpenB} position={[0.45, -0.2, 1.01]}
+                  geometry={nodes.oak2.geometry} material={materials.oak_2}
+                  name="h_right_open_B"/>
 
 
             <Text color="black" rotation={[routable(0), routable(90), routable(0)]} scale={0.3}
@@ -366,39 +465,41 @@ export default function Box_10() {
                   position={[-0.5, -0.6, 1.01]}>20</Text>
 
 
-                <mesh ref={open_2_1} geometry={nodes.key_open_2_1.geometry} position={[0.5, -1.5, -1.05]}
-                      material={materials.key_open_2_1}
-                      name="key_open_2_1" material-color={color.key_1}/>
+            <mesh ref={open_2_1} geometry={nodes.key_open_2_1.geometry} position={[0.5, -1.5, -1.05]}
+                  material={materials.key_open_2_1}
+                  name="key_open_2_1" material-color={color.key_1}/>
 
-                <mesh ref={open_2_2} geometry={nodes.key_open_2_2.geometry} material-color={color.key_2}
-                      position={[-0.2, -1.5, -1.05]} material={materials.key_open_2_2}
-                      name="key_open_2_2"/>
+            <mesh ref={open_2_2} geometry={nodes.key_open_2_2.geometry} material-color={color.key_2}
+                  position={[-0.2, -1.5, -1.05]} material={materials.key_open_2_2}
+                  name="key_open_2_2"/>
 
-                <mesh ref={open_2_3} geometry={nodes.key_open_2_3.geometry} material-color={color.key_3}
-                      position={[-1, -1.5, -1.05]} material={materials.key_open_2_3}
-                      name="key_open_2_3"/>
+            <mesh ref={open_2_3} geometry={nodes.key_open_2_3.geometry} material-color={color.key_3}
+                  position={[-1, -1.5, -1.05]} material={materials.key_open_2_3}
+                  name="key_open_2_3"/>
 
-                <mesh ref={open_2_4} geometry={nodes.key_open_2_4.geometry} material-color={color.key_4}
-                      position={[1, -1.5, -1.05]} material={materials.key_open_2_4}
-                      name="key_open_2_4"/>
+            <mesh ref={open_2_4} geometry={nodes.key_open_2_4.geometry} material-color={color.key_4}
+                  position={[1, -1.5, -1.05]} material={materials.key_open_2_4}
+                  name="key_open_2_4"/>
 
-                <mesh ref={open_2_5} geometry={nodes.key_open_2_5.geometry} material-color={color.key_5}
-                      position={[-0.6, -0.6, -1.05]} material={materials.key_open_2_5}
-                      name="key_open_2_5"/>
-
-
+            <mesh ref={open_2_5} geometry={nodes.key_open_2_5.geometry} material-color={color.key_5}
+                  position={[-0.6, -0.6, -1.05]} material={materials.key_open_2_5}
+                  name="key_open_2_5"/>
 
 
-            <mesh ref = {open_2_val_1} geometry={nodes.open_2_val.geometry} position={[0.85, 0.7, -1]} material={materials.open_2_val}
+            <mesh ref={open_2_val_1} geometry={nodes.open_2_val.geometry} position={[0.85, 0.7, -1]}
+                  material={materials.open_2_val}
                   name="open_2_val_1"/>
 
-            <mesh ref = {open_2_val_2} geometry={nodes.open_2_val.geometry} position={[0.25, 0.7, -1]} material={materials.open_2_val}
+            <mesh ref={open_2_val_2} geometry={nodes.open_2_val.geometry} position={[0.25, 0.7, -1]}
+                  material={materials.open_2_val}
                   name="open_2_val_2"/>
 
-            <mesh ref = {open_2_val_3} geometry={nodes.open_2_val.geometry} position={[0.32, -0.06, -1]} material={materials.open_2_val}
+            <mesh ref={open_2_val_3} geometry={nodes.open_2_val.geometry} position={[0.32, -0.06, -1]}
+                  material={materials.open_2_val}
                   name="open_2_val_3"/>
 
-            <mesh ref = {open_2_val_4} geometry={nodes.open_2_val.geometry} position={[-0.3, -0.07, -1]} material={materials.open_2_val}
+            <mesh ref={open_2_val_4} geometry={nodes.open_2_val.geometry} position={[-0.3, -0.07, -1]}
+                  material={materials.open_2_val}
                   name="open_2_val_4"/>
 
             <group ref={open_5}>
@@ -425,37 +526,44 @@ export default function Box_10() {
                       name="open_5_1"/>
             </group>
 
+            <group ref={exit_key}>
+                <mesh geometry={nodes.open_6_1_1.geometry} material={materials.open_6_1} name="open_6_1"/>
+                <mesh geometry={nodes.open_6_1_2.geometry} material={materials.open_6_1} name="open_6_1"/>
 
-            <mesh geometry={nodes.open_6_1_1.geometry} material={materials.open_6_1} name="open_6_1"/>
-            <mesh geometry={nodes.open_6_1_2.geometry} material={materials.open_6_1} name="open_6_1"/>
+                <mesh ref={open_6_key_1} geometry={nodes.open_6_key_1.geometry} position={[0.5, 1.2, 0.5]}
+                      material={materials.open_6_key_1}
+                      name="open_6_key_1"/>
 
-            <mesh ref = {open_6_key_1} geometry={nodes.open_6_key_1.geometry} position={[0.5, 1.2, 0.5]} material={materials.open_6_key_1}
-                  name="open_6_key_1"/>
+                <group position={[-1, 0, -1]}>
+                    <mesh geometry={nodes.open_6_1_1.geometry} material={materials.open_6_1} name="open_6_2"/>
+                    <mesh geometry={nodes.open_6_1_2.geometry} material={materials.open_6_1} name="open_6_2"/>
+                </group>
 
-            <group position={[-1, 0, -1]}>
-                <mesh geometry={nodes.open_6_1_1.geometry} material={materials.open_6_1} name="open_6_2"/>
-                <mesh geometry={nodes.open_6_1_2.geometry} material={materials.open_6_1} name="open_6_2"/>
+                <mesh ref={open_6_key_2} geometry={nodes.open_6_key_1.geometry} position={[-0.5, 1.2, -0.5]}
+                      material={materials.open_6_key_1}
+                      name="open_6_key_2"/>
+
+
+                <group position={[0.15, 0, -0.9]} scale={[0.8, 1, 0.8]}>
+                    <mesh geometry={nodes.open_6_1_1.geometry} material={materials.open_6_1} name="open_6_3"/>
+                    <mesh geometry={nodes.open_6_1_2.geometry} material={materials.open_6_1} name="open_6_3"/>
+                </group>
+
+                <mesh ref={open_6_key_3} geometry={nodes.open_6_key_1.geometry} position={[0.555, 1.2, -0.5]}
+                      material={materials.open_6_key_1}
+                      name="open_6_key_3"/>
+
+                <group position={[-0.95, 0, 0.1]} scale={[0.8, 1, 0.8]}>
+                    <mesh geometry={nodes.open_6_1_1.geometry} material={materials.open_6_1} name="open_6_4"/>
+                    <mesh geometry={nodes.open_6_1_2.geometry} material={materials.open_6_1} name="open_6_4"/>
+                </group>
+
+                <mesh ref={open_6_key_4} geometry={nodes.open_6_key_1.geometry} position={[-0.545, 1.2, 0.5]}
+                      material={materials.open_6_key_1}
+                      name="open_6_key_4"/>
             </group>
 
-            <mesh ref = {open_6_key_2} geometry={nodes.open_6_key_1.geometry} position={[-0.5, 1.2, -0.5]} material={materials.open_6_key_1}
-                  name="open_6_key_2"/>
 
-
-            <group position={[0.15, 0, -0.9]} scale={[0.8, 1, 0.8]}>
-                <mesh geometry={nodes.open_6_1_1.geometry} material={materials.open_6_1} name="open_6_3"/>
-                <mesh geometry={nodes.open_6_1_2.geometry} material={materials.open_6_1} name="open_6_3"/>
-            </group>
-
-            <mesh ref = {open_6_key_3} geometry={nodes.open_6_key_1.geometry} position={[0.555, 1.2, -0.5]} material={materials.open_6_key_1}
-                  name="open_6_key_3"/>
-
-            <group position={[-0.95, 0, 0.1]} scale={[0.8, 1, 0.8]}>
-                <mesh geometry={nodes.open_6_1_1.geometry} material={materials.open_6_1} name="open_6_4"/>
-                <mesh geometry={nodes.open_6_1_2.geometry} material={materials.open_6_1} name="open_6_4"/>
-            </group>
-
-            <mesh ref = {open_6_key_4} geometry={nodes.open_6_key_1.geometry} position={[-0.545, 1.2, 0.5]} material={materials.open_6_key_1}
-                  name="open_6_key_4"/>
         </group>
 
     )
