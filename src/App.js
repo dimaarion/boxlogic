@@ -38,6 +38,7 @@ function App() {
                     <Levels selectLevel={selectLevel}/>
                     <Environment preset="city"/>
                     <CameraControls makeDefault distance={8}/>
+
                 </Canvas>
                 <OpenLevelList class = "panel-global"/>
                 {selectOpenLevelPanel?<div>
