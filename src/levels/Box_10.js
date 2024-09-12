@@ -1,9 +1,7 @@
 import * as THREE from 'three'
 import {useRef, useState, useEffect} from "react"
 import {useFrame, useLoader} from "@react-three/fiber"
-import {
-    useGLTF, Text
-} from "@react-three/drei"
+import {useGLTF, Text } from "@react-three/drei"
 import {proxy} from "valtio";
 import {Physics, RigidBody} from '@react-three/rapier'
 import {useDispatch, useSelector} from "react-redux";
@@ -75,7 +73,7 @@ export default function Box_10() {
 
 
     useEffect(() => {
-        console.log(nodes)
+      //  console.log(nodes)
         //  console.log(materials)
         document.querySelector("body").style.backgroundImage = "url('./asset/bg/ind.webp')"
     }, [selectLevel])

@@ -11,6 +11,7 @@ import Box from "../levels/Box";
 import Box_8 from "../levels/Box_8";
 import Box_9 from "../levels/Box_9";
 import Box_10 from "../levels/Box_10";
+import Box_11 from "../levels/Box_11";
 
 export default function Levels(props) {
     const selectExit = useSelector((state) => state.gameExitLevel);
@@ -32,10 +33,12 @@ export default function Levels(props) {
             return <Box_7 level={7}/>;
         case 8:
             return <Box_8 level={8}/>;
-        case 9:
+        case 92:
             return <Box_9 level={9}/>;
-        case 10:
+        case 20:
             return <Box_10 level={10}/>;
+        case 9:
+            return <Box_11 />;
         default:
             return <Box_1 level={1}/>
     }

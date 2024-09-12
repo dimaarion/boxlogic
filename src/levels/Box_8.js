@@ -91,20 +91,7 @@ export default function Box_8(props) {
                 });
 
             } else {
-                if (keyRotateAlf) {
-                    alf.current.children.filter((el) => el.name === "alf").forEach((el) => {
-                        el.rotation.x = velocityInvert(t);
-                    });
-                    alf2.current.children.filter((el) => el.name === "alf").forEach((el) => {
-                        el.rotation.x = velocityInvert(t);
-                    });
-                }
 
-                if (keyRotateOpen) {
-                    ref.current.children.filter((el) => el.name === "open_key").forEach((el) => {
-                        el.rotation.z = velocityInvert(t);
-                    });
-                }
             }
 
             if (keyRotate === "key_2_1") {
@@ -185,21 +172,6 @@ export default function Box_8(props) {
             if (keyRotate === "key_2_7") {
                 key_1_7.current.rotation.x = velocityInvert(t);
             }
-            if (keyRotateAlf) {
-                alf.current.children.filter((el) => el.name === "alf").forEach((el) => {
-                    el.rotation.x = velocityInvert(t);
-                });
-                alf2.current.children.filter((el) => el.name === "alf").forEach((el) => {
-                    el.rotation.x = velocityInvert(t);
-                });
-            }
-
-            if (keyRotateOpen) {
-                ref.current.children.filter((el) => el.name === "open_key").forEach((el) => {
-                    el.rotation.z = velocityInvert(t);
-                });
-            }
-
 
         }
 
@@ -216,6 +188,21 @@ export default function Box_8(props) {
                 if (key_open > 360) {
                     setKey_open(0);
                 }
+            }
+        }else {
+            if (keyRotateAlf) {
+                alf.current.children.filter((el) => el.name === "alf").forEach((el) => {
+                    el.rotation.x = velocityInvert(t);
+                });
+                alf2.current.children.filter((el) => el.name === "alf").forEach((el) => {
+                    el.rotation.x = velocityInvert(t);
+                });
+            }
+
+            if (keyRotateOpen) {
+                ref.current.children.filter((el) => el.name === "open_key").forEach((el) => {
+                    el.rotation.z = velocityInvert(t);
+                });
             }
         }
 

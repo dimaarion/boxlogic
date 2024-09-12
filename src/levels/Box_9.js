@@ -73,7 +73,7 @@ export default function Box_9() {
     useEffect(() => {
       //  console.log(nodes)
         //  console.log(materials)
-        dispatch({type: "LEVEL", preload:10})
+      //  dispatch({type: "LEVEL", preload:10})
     }, [])
 
 

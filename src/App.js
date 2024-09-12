@@ -60,7 +60,8 @@ useGLTF.preload([
     './asset/obj/box7.glb',
     './asset/obj/box8.glb',
     './asset/obj/box9.glb',
-    './asset/obj/box10.glb'
+    './asset/obj/box10.glb',
+    './asset/obj/box11.glb'
 ]);
 
 export default App;
