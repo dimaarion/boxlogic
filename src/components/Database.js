@@ -28,7 +28,7 @@ constructor() {
     create() {
         this.db = new Loki("boxes", {
             autosave: true, //setting to save
-            autosaveInterval: 1000
+            autosaveInterval: 500
         });
 
         this.db.loadDatabase({}, () => {

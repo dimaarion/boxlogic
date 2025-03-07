@@ -15,7 +15,7 @@ export default function LevelTransfer() {
     const selectRate = useSelector((state) => state.rate);
     const selectLevel = useSelector((state) => state.level);
     const selectLevelOptions = useSelector((state) => state.levelOptions);
-    const selectOpenLevelPanel = useSelector((state)=>state.openLevelPanel);
+    const selectOpenLevelPanel = useSelector((state) => state.openLevelPanel);
     const grass = [25, 50, 100, 150];
     const [levelPanel, setLevelPanel] = useState(false)
 
@@ -58,7 +58,7 @@ export default function LevelTransfer() {
                     {grass[selectRate]}
                 </div>
                 <div style={styles.panel}>
-                    <div className="panel" onClick={() => {
+                    <div className="panel"  onClick={() => {
                         dispatch({type: "EXIT", preload: false});
                         dispatch({type: "RESTART", preload: true});
                         dispatch({type: "GRASSES", preload: selectGrasses - grass[selectRate]})

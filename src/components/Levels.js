@@ -17,7 +17,7 @@ export default function Levels(props) {
     const selectExit = useSelector((state) => state.gameExitLevel);
 
     switch (props.selectLevel) {
-        case 1:
+        case 9:
             return <Box_1 level={1}/>;
         case 2:
             return <Box_2 level={2}/>;
@@ -29,15 +29,15 @@ export default function Levels(props) {
             return <Box_5 level={5}/>;
         case 6:
             return <Box_6 level={6}/>;
-        case 7:
+        case 71:
             return <Box_7 level={7}/>;
-        case 8:
+        case 81:
             return <Box_8 level={8}/>;
         case 92:
             return <Box_9 level={9}/>;
         case 20:
             return <Box_10 level={10}/>;
-        case 9:
+        case 93:
             return <Box_11 />;
         default:
             return <Box_1 level={1}/>

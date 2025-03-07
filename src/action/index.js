@@ -1,3 +1,5 @@
+import * as THREE from "three";
+
 export async function createAudio(url) {
     // Fetch audio data and create a buffer source
     const res = await fetch(url)
@@ -70,4 +72,81 @@ export function calcAngleDegrees(x, y) {
 
 export function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
+}
+
+
+export function collideRotation (name, actions,n,k) {
+    return actions[name].time >= n && actions[name].time <= k;
+
+}
+
+export const handleClick = (e,actions, nameMesh, name, is, set, scale = 1,stop ) => {
+    if (is) return; // Если уже кликали — не анимируем снова
+      console.log(e.object.name)
+
+    if (e.object.name === nameMesh) {
+        if(Array.isArray(stop)){
+            stop.forEach((el)=>{
+                if(actions[el]){
+                    actions[el].stop()
+                }
+            })
+        }else {
+            if(actions[stop]){
+                actions[stop].stop()
+            }
+        }
+
+        if (Array.isArray(name)) {
+            name.forEach((el) => {
+                if(actions[el]){
+                    actions[el].timeScale = scale;
+                    actions[el].play().paused = false;
+                }else {
+                    console.log("Ошибка анимации - " + el)
+                }
+
+            })
+        } else {
+            if(actions[name]){
+                actions[name].timeScale = scale;
+                actions[name].play().paused = false;
+            }else {
+                console.log("Ошибка анимации - " + name)
+            }
+
+        }
+        set(true)
+    }
+
+}
+
+export function animateStop(e,actions, nameMesh, name, is, set) {
+    if (e.object.name === nameMesh) {
+        if (Array.isArray(name)) {
+            name.forEach((el) => {
+                actions[el].play().paused = true;
+            })
+        } else {
+            actions[name].play().paused = true;
+        }
+        set(false)
+    }
+
+}
+
+export function arraysEqual(a, b) {
+    return a.length === b.length && a.every((val, index) => val === b[index]);
+}
+
+export function onAnimation(actionArr,actions){
+    actionArr.forEach((el) => {
+        if (actions[el]) {
+            actions[el].setLoop(THREE.LoopOnce, 1);
+            actions[el].clampWhenFinished = true;
+        } else {
+            console.log("Ошибка анимации - " + el)
+        }
+
+    })
 }

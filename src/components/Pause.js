@@ -34,29 +34,8 @@ export default function Pause(){
     );
 
 
-    useEffect(()=>{
-        window.addEventListener("click",()=>{
-            setFocus(true);
-        })
-
-        window.addEventListener("focus",()=>{
-            setFocus(true);
-        })
-
-        window.addEventListener("blur",()=>{
-            setFocus(false);
-        })
-
-    },[])
 
 
-    useEffect(()=>{
-        if(!selectPause && !selectExit && focus){
-            play()
-        }else {
-            stop()
-        }
-    },[selectPause,selectExit,focus])
 
 
 if(selectExit || selectOpenLevelPanel){
